@@ -1,0 +1,95 @@
+
+/* Swipe select */
+
+.swipelect {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: #fff;
+}
+
+
+
+/* Container */
+
+.swipelect__container {
+    height: 100%;
+}
+
+
+.swipelect__slide {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+.custom-collection-list .card-swiper-slider.card__content {
+    text-align: center;
+    padding: 0 10px;
+}
+
+/* mobile header */
+.header-swipelect {
+    position: relative;
+    width: 100%;
+    max-width: max-content;
+    overflow: hidden;
+    padding: 0;
+}
+.header-swipelect .swipelect__slide {
+    width: max-content;
+}
+
+/* next button */
+.swiper-button-prev {
+    /* but first hide on small viewports */
+    display: none;
+
+    left: 0;
+    top: 0;
+
+    margin-top: 0;
+
+    /* subtract .swiper-wrapper bottom-margin to vertically center arrow */
+    height: calc(100% - 3em);
+}
+
+@media (min-width: 37.5em) {
+    .swiper-button-prev {
+        /* show on larger viewports */
+        display: block;
+    }
+}
+
+.swiper-button-next {
+    /* hide on small viewports */
+    display: none;
+
+    right: 0;
+    top: 0;
+
+    margin-top: 0;
+
+    /* subtract .swiper-wrapper bottom-margin to vertically center arrow */
+    height: calc(100% - 3em);
+}
+
+@media (min-width: 37.5em) {
+    .swiper-button-next {
+        /* show on larger viewports */
+        display: block;
+    }
+}

@@ -31,6 +31,11 @@
     justify-self: start;
     margin-left: -1.2rem;
   }
+  .header-icon__font {
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
 
   {%- if section.settings.sticky_header_type == 'reduce-logo-size' -%}
     .scrolled-past-header .header__heading-logo-wrapper {
@@ -51,6 +56,7 @@
   .list-menu--inline {
     display: inline-flex;
     flex-wrap: wrap;
+    gap: 20px;
   }
 
   summary.list-menu__item {
@@ -90,6 +96,7 @@
     justify-content: space-between;
     padding: 0 20px;
     width: 100%;
+    max-height: 50px;
   }
   .custom-header .header__heading {
     width: 20%;
@@ -114,7 +121,9 @@
     position: sticky; /* This is for fixing a Safari z-index issue. PR #2147 */
     margin-bottom: {{ section.settings.margin_bottom | times: 0.75 | round: 0 }}px;
   }
-  
+  .header-logo-mobile {
+    display: none;
+  }
   @media screen and (min-width: 750px) {
     .list-menu__item--link {
       padding-bottom: 0.5rem;
@@ -152,13 +161,16 @@
     }
     .custom-header .header__heading {
       display: block;
-      width: 100%;
+      text-align: left;
+      width: max-content;
     }
     .custom-header .header__icons {
       display: none;
     }
     .custom-header .header-logo-serach-wrapper {
-      flex-direction: column;
+      flex-direction: row;
+      align-items: center;
+      padding: 0 5px;
     }
     .custom-header .header__heading-logo-wrapper{
       padding: 0;
@@ -185,10 +197,10 @@
       text-align: center;
       border: 1px solid #999292;
       border-radius: 3px;
-      padding: 5px;
       background-color: #fff;
       width: max-content !important;
       border: unset;
+      padding: 5px;
     }
 
     .custom-header .menu-mobile ul li.btn-9 {
@@ -278,6 +290,8 @@
     .custom-header .mobile-title-link {
       text-decoration: none;
       color: {{section.settings.mobile_nav}};
+      font-weight: 500;
+      font-size: 12px;
     }
     
     .custom-header .field__label {
@@ -309,7 +323,7 @@
       height: 35px;
     }
     .custom-header.show {
-      height: 150px;
+      height: auto;
       transition: height .5s ease;
       margin-bottom: 10px;
 
@@ -321,10 +335,17 @@
     .custom-header.show .custom-mobile-setting{
       opacity: 1;
       transition: opacity .3s ease;
+      width: max-content;
     }
     .custom-header.hidden .custom-mobile-setting{
       opacity: 0.3;
       transition: opacity .3s ease;
+    }
+    .header-logo-mobile {
+      text-align: left;
+      display: flex !important;
+      align-items: center;
+      padding: 5px;
     }
 
     
@@ -404,7 +425,7 @@
         {%- endif -%}
             <a href="{{ routes.root_url }}" class="custom-mobile-setting header__heading-link link link--text focus-inset">
               {%- if settings.logo != blank -%}
-                <div class="header__heading-logo-wrapper">
+                <div class="header__heading-logo-wrapper desktop">
                   {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
                   {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
                   {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
@@ -418,6 +439,18 @@
                     sizes: sizes,
                     preload: true
                   }}
+                </div>
+                <div class="header-logo-mobile mobile">
+                  {% if section.settings.mobile_logo != blank %}
+                    <img
+                        srcset="{{ section.settings.mobile_logo | image_url: width: 30 }}, {{ section.settings.mobile_logo | image_url: width: 60 }} 2x"
+                        src="{{ section.settings.mobile_logo | image_url: width: 760 }}"
+                        alt="{{ section.settings.mobile_logo.alt | escape }}"
+                        loading="lazy"
+                        width="40"
+                        height="40"
+                      >
+                  {% endif %}
                 </div>
               {%- else -%}
                 <span class="h2">{{ shop.name }}</span>
@@ -522,8 +555,9 @@
 
         {%- if shop.customer_accounts_enabled -%}
           <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}">
+            
             {% render 'icon-account' %}
-            <span class="visually-hidden">
+            <span class="header-icon__font">
               {%- liquid
                 if customer
                   echo 'customer.account_fallback' | t
@@ -549,7 +583,7 @@
               render 'icon-cart'
             endif
           -%}
-          <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+          <span class="header-icon__font">{{ 'templates.cart.cart' | t }}</span>
           {%- if cart != empty -%}
             <div class="cart-count-bubble">
               {%- if cart.item_count < 100 -%}
@@ -567,35 +601,216 @@
       if section.settings.menu != blank
         if section.settings.menu_type_desktop == 'drawer'
           render 'header-drawer'
-        elsif section.settings.menu_type_desktop == 'dropdown'
-          render 'header-dropdown-menu'
         elsif section.settings.menu_type_desktop == 'mega'
           render 'header-mega-menu'
         endif
       endif
     %}
+    {% comment %}
+  Renders a standard dropdown style menu for the header.
+
+  Usage:
+  {% render 'header-dropdown-menu' %}
+{% endcomment %}
+<style>
+  .header-draw-menu__full--width {
+    width: 100%;
+    left: 0;
+    display: flex;
+    padding: 20px 60px !important;
+  }
+  .header-draw-menu__full--width .menu_text {
+    width: 100%;
+    left: 0;
+    height: max-content;
+    grid-template-columns: auto auto auto;
+    display: grid;
+    justify-content: start;
+    align-items: start;
+    
+  }
+  .header-draw-menu__full--width .menu_img {
+    display: flex;
+    gap: 20px;
+  }
+  .header-draw-menu__full--width h3 {
+    text-align: center;
+  }
+  .mega-menu-text:hover:before {
+    transform: scaleX(1);
+  }
+  .mega-menu-text:before {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    background-color: currentColor;
+    height: 2px;
+    transition: transform .3s;
+    z-index: 20;
+    left: 18px;
+    width: calc(100% - 36px);
+    transform: scaleX(0);
+    will-change: transform;
+    color: #4a49fe;
+  }
+  
+</style>
+
+<nav class="header__inline-menu">
+  <ul class="list-menu list-menu--inline" role="list">
+    {%- for link in section.settings.menu.links -%}
+      <li>
+        {%- if link.links != blank -%}
+          <header-menu>
+            <details id="Details-HeaderMenu-{{ forloop.index }}">
+              <summary
+                id="HeaderMenu-{{ link.handle }}"
+                class="header__menu-item list-menu__item link focus-inset"
+              >
+                <span
+                  {%- if link.child_active %}
+                    class="header__active-menu-item"
+                  {% endif %}
+                  class="mega-menu-text"
+                >
+                  {{- link.title | escape -}}
+                </span>
+                {% render 'icon-caret' %}
+              </summary>
+              <ul
+                id="HeaderMenu-MenuList-{{ forloop.index }}"
+                class="header-draw-menu__full--width header__submenu list-menu list-menu--disclosure color-{{ section.settings.menu_color_scheme }} gradient caption-large motion-reduce global-settings-popup"
+                role="list"
+                tabindex="-1"
+              >
+                <div class="menu_text">
+                {%- for childlink in link.links -%}
+                  <li>
+                    {%- if childlink.links == blank -%}
+                      <a
+                        id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
+                        href="{{ childlink.url }}"
+                        class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if childlink.current %} list-menu__item--active{% endif %}"
+                        {% if childlink.current %}
+                          aria-current="page"
+                        {% endif %}
+                      >
+                        {{ childlink.title | escape }}
+                      </a>
+                    {%- else -%}
+                      <details id="Details-HeaderSubMenu-{{ link.handle }}-{{ childlink.handle }}">
+                        <summary
+                          id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
+                          class="header__menu-item link link--text list-menu__item focus-inset caption-large"
+                        >
+                          <span>{{ childlink.title | escape }}</span>
+                          {% render 'icon-caret' %}
+                        </summary>
+                        <ul
+                          id="HeaderMenu-SubMenuList-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                          class="header__submenu list-menu motion-reduce"
+                        >
+                          {%- for grandchildlink in childlink.links -%}
+                            <li>
+                              <a
+                                id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                                href="{{ grandchildlink.url }}"
+                                class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if grandchildlink.current %} list-menu__item--active{% endif %}"
+                                {% if grandchildlink.current %}
+                                  aria-current="page"
+                                {% endif %}
+                              >
+                                {{ grandchildlink.title | escape }}
+                              </a>
+                            </li>
+                          {%- endfor -%}
+                        </ul>
+                      </details>
+                    {%- endif -%}
+                  </li>
+                {%- endfor -%}
+              </div>
+                {%- for block in section.blocks -%}
+                  {%- if block.type == "menupicture" -%}
+                    {%- if link.title contains block.settings.menu_text -%}
+                      <div class="menu_img">
+                        {%- if block.settings.menu_img -%}                       
+                        
+                      <a href="{{ block.settings.menu_url }}">
+                      <img
+                        srcset="
+                          {%- if block.settings.menu_img.width >= 375 -%}{{ block.settings.menu_img | image_url: width: 375 }} 375w,{%- endif -%}
+                          {%- if block.settings.menu_img.width >= 750 -%}{{ block.settings.menu_img | image_url: width: 750 }} 750w,{%- endif -%}
+                          {{ block.settings.menu_img | image_url }} {{ block.settings.menu_img.width }}w
+                        "
+                        sizes="100vw"
+                        src="{{ block.settings.menu_img | image_url: width: 140 }}"
+                        loading="lazy" class="lazyload"
+                        alt="{{ block.settings.menu_img.alt | escape }}"
+                        width="200"
+                        height="200"
+                      >
+                        <h3>{{ block.settings.menu_pic_text }}</h3>
+                      </a>
+                        {%- endif -%}
+                        
+                        {%- if block.settings.menu_img_2 -%}                          
+                      <a href="{{ block.settings.meun_url }}">
+                        <img
+                          srcset="
+                            {%- if block.settings.menu_img_2.width >= 375 -%}{{ block.settings.menu_img_2 | image_url: width: 375 }} 375w,{%- endif -%}
+                            {%- if block.settings.menu_img_2.width >= 750 -%}{{ block.settings.menu_img_2 | image_url: width: 750 }} 750w,{%- endif -%}
+                            {{ block.settings.menu_img_2 | image_url }} {{ block.settings.menu_img_2.width }}w
+                          "
+                          sizes="100vw"
+                          src="{{ block.settings.menu_img_2 | image_url: width: 140 }}"
+                          loading="lazy" class="lazyload"
+                          alt="{{ block.settings.menu_img_2.alt | escape }}"
+                          width="200"
+                          height="200"
+                        >
+                          <h3>{{ block.settings.menu_pic_text2 }}</h3>
+                      </a>
+                        {%- endif -%}
+                          
+                    </div>
+                    {%- endif -%}
+                  {%- endif -%}
+                {%- endfor -%}
+              </ul>
+              
+            </details>
+          </header-menu>
+        {%- else -%}
+          <a
+            id="HeaderMenu-{{ link.handle }}"
+            href="{{ link.url }}"
+            class="header__menu-item list-menu__item link link--text focus-inset"
+            {% if link.current %}
+              aria-current="page"
+            {% endif %}
+          >
+            <span
+              {%- if link.current %}
+                class="header__active-menu-item"
+              {% endif %}
+            >
+              {{- link.title | escape -}}
+            </span>
+          </a>
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+</nav>
+
 
   </header>
   
   
 </{% if section.settings.sticky_header_type != 'none' %}sticky-header{% else %}div{% endif %}>
 
-  <script>
-    let items = document.querySelector(".header__inline-menu").querySelectorAll("details");
-    console.log(items)
-    items.forEach(item => {
-      item.addEventListener("mouseover", () => {
-        item.setAttribute("open", true);
-        item.querySelector("ul").addEventListener("mouseleave", () => {
-          item.removeAttribute("open");
-        });
-      item.addEventListener("mouseleave", () => {
-        item.removeAttribute("open");
-      });
-    });
-    
-    });
-  </script>
+  
 
 {%- if settings.cart_type == "notification" -%}
   {%- render 'cart-notification', color_scheme: section.settings.color_scheme, desktop_menu_type: section.settings.menu_type_desktop -%}
@@ -752,17 +967,37 @@
     }
   </script>
 {%- endif -%}
+<script>
+  let items = document.querySelector(".header__inline-menu").querySelectorAll("details");
+  console.log(items)
+  items.forEach(item => {
+    item.addEventListener("mouseover", () => {
+      item.setAttribute("open", true);
+      item.querySelector("ul").addEventListener("mouseleave", () => {
+        item.removeAttribute("open");
+      });
+    item.addEventListener("mouseleave", () => {
+      item.removeAttribute("open");
+    });
+  });
+  
+  });
+</script>
 
 {% schema %}
 {
   "name": "t:sections.header.name",
   "class": "section-header",
-  "max_blocks": 3,
   "settings": [
     {
       "type": "image_picker",
       "id": "header_bg_img",
       "label": "Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_logo",
+      "label": "Mobile logo"
     },
     {
       "type": "color",
@@ -940,10 +1175,10 @@
       "id": "padding_top",
       "min": 0,
       "max": 36,
-      "step": 4,
+      "step": 2,
       "unit": "px",
       "label": "t:sections.all.padding.padding_top",
-      "default": 20
+      "default": 10
     },
     {
       "type": "range",
@@ -958,7 +1193,45 @@
   ],
   "blocks": [
     {
-      "type": "@app"
+      "type": "menupicture",
+      "name": "Menu picture",
+      "settings": [
+       {
+        "type": "text",
+        "id": "menu_text",
+        "label": "Menu text"
+       },
+       {
+        "type": "image_picker",
+        "id": "menu_img",
+        "label": "Menu Image"
+       },
+       {
+        "type": "url",
+        "id": "meun_url",
+        "label": "Menu URL"
+       },
+       {
+        "type": "text",
+        "id": "menu_pic_text",
+        "label": "Picture text"
+       },
+       {
+        "type": "image_picker",
+        "id": "menu_img_2",
+        "label": "Menu Image2"
+       },
+       {
+        "type": "url",
+        "id": "meun_url_2",
+        "label": "Menu URL2"
+       },
+       {
+        "type": "text",
+        "id": "menu_pic_text2",
+        "label": "Picture text2"
+       }
+      ]
     }
   ]
 }

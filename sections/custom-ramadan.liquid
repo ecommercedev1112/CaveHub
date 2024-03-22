@@ -75,11 +75,27 @@
   <div class="collection section-{{ section.id }}-padding{% if section.settings.full_width %} collection--full-width{% endif %}">
     <div class="collection__title title-wrapper title-wrapper--no-top-margin page-width{% if show_mobile_slider %} title-wrapper--self-padded-tablet-down{% endif %}{% if show_desktop_slider %} collection__title--desktop-slider{% endif %}">
       {% if section.settings.header_image != blank %}
-        <img
+        {% comment %} <img
             src="{{ section.settings.header_image | image_url: width: 140 }}"
             alt="{{ section.settings.header_image | escape }}"
             loading="lazy" class="lazyload"
-          >
+            width="auto"
+            height="auto"
+          > {% endcomment %}
+            <img
+              srcset="
+                {%- if section.settings.header_image.width >= 375 -%}{{ section.settings.header_image | image_url: width: 375 }} 375w,{%- endif -%}
+                {%- if section.settings.header_image.width >= 750 -%}{{ section.settings.header_image | image_url: width: 750 }} 750w,{%- endif -%}
+                {{ section.settings.header_image | image_url }} {{section.settings.header_image.width }}w
+              "
+              sizes="100vw"
+              src="{{ section.settings.header_image | image_url: width: 140 }}"
+              loading="lazy" class="lazyload"
+              alt="{{ section.settings.header_image.alt | escape }}"
+              width="70"
+              height="{{ 70 | divided_by:section.settings.header_image.aspect_ratio | ceil }}"
+            >
+           
       {% endif %}
       {%- if section.settings.title != blank -%}
         <h2 class="title inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">

@@ -17,7 +17,8 @@
    {% assign focIsEnabled = true %}
    
    <script>window.RapidSearchCollectionInfo = {{ collection | json }}</script>
-  <script src="https://static2.rapidsearch.dev/resultpage.js?shop=c3b716.myshopify.com"></script>
+  <script src="{{ 'rapidsearch.js' | asset_url }}" defer="defer"></script>
+
 
 {% endif %}
   

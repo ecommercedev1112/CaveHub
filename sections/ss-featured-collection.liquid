@@ -693,11 +693,37 @@
                 {% for item in items limit:product_show %}
                   <a href="{{ item.url }}" class="swiper-slide">
                     <div class="featured-collection-image-{{ section.id }} {% if item.images.size > 1 %} has-secondary-{{ section.id }} {% endif %}">
-                      <img class="lazyload {% if item.images.size > 1 %}featured-collection-first-image-{{ section.id }}{% endif %}" src="{{ item.featured_image | image_url }}" {% if section.settings.lazy_load %} loading="lazy" {% endif %} alt="image">
+                      {% comment %} <img class="lazyload {% if item.images.size > 1 %}featured-collection-first-image-{{ section.id }}{% endif %}" src="{{ item.featured_image | image_url }}" {% if section.settings.lazy_load %} loading="lazy" {% endif %} alt="image"> {% endcomment %}
+                      <img
+                        srcset="
+                          {%- if item.featured_image.width >= 375 -%}{{ item.featured_image | image_url: width: 375 }} 375w,{%- endif -%}
+                          {%- if item.featured_image.width >= 750 -%}{{ item.featured_image | image_url: width: 750 }} 750w,{%- endif -%}
+                          {{ item.featured_image | image_url }} {{item.featured_image.width }}w
+                        "
+                        sizes="100vw"
+                        src="{{ item.featured_image | image_url: width: 140 }}"
+                        loading="lazy" class="lazyload {% if item.images.size > 1 %}featured-collection-first-image-{{ section.id }}{% endif %}"
+                        alt="{{ item.featured_image.alt | escape }}"
+                        width="70"
+                        height="{{ 70 | divided_by:item.featured_image.aspect_ratio | ceil }}"
+                      >
                       {% if item.images.size > 1 %}
                         {% for img in item.images %}
                           {% if forloop.index == 2 %}
-                            <img class="lazyload featured-collection-second-image-{{ section.id }}" src="{{ img | image_url }}" {% if section.settings.lazy_load %} loading="lazy" {% endif %} alt="image">
+                            {% comment %} <img class="lazyload featured-collection-second-image-{{ section.id }}" src="{{ img | image_url }}" {% if section.settings.lazy_load %} loading="lazy" {% endif %} alt="image"> {% endcomment %}
+                            <img
+                              srcset="
+                                {%- if img.width >= 375 -%}{{ img | image_url: width: 375 }} 375w,{%- endif -%}
+                                {%- if img.width >= 750 -%}{{ img | image_url: width: 750 }} 750w,{%- endif -%}
+                                {{ img | image_url }} {{img.width }}w
+                              "
+                              sizes="100vw"
+                              src="{{ img | image_url: width: 140 }}"
+                              loading="lazy" class="lazyload featured-collection-second-image-{{ section.id }}"
+                              alt="{{ img.alt | escape }}"
+                              width="70"
+                              height="{{ 70 | divided_by:img.aspect_ratio | ceil }}"
+                            >
                           {% endif %}
                         {% endfor %}
                       {% endif %}
@@ -746,11 +772,37 @@
               {% for item in items limit:product_show %}
                   <a href="{{ item.url }}" class="featured-collection-item-{{ section.id }}">
                     <div class="featured-collection-image-{{ section.id }} {% if item.images.size > 1 %} has-secondary-{{ section.id }} {% endif %}">
-                      <img class="lazyload {% if item.images.size > 1 %}featured-collection-first-image-{{ section.id }}{% endif %}" src="{{ item.featured_image | image_url }}" alt="image">
+                      {% comment %} <img class="lazyload {% if item.images.size > 1 %}featured-collection-first-image-{{ section.id }}{% endif %}" src="{{ item.featured_image | image_url }}" alt="image"> {% endcomment %}
+                      <img
+                        srcset="
+                          {%- if item.featured_image.width >= 375 -%}{{ item.featured_image | image_url: width: 375 }} 375w,{%- endif -%}
+                          {%- if item.featured_image.width >= 750 -%}{{ item.featured_image | image_url: width: 750 }} 750w,{%- endif -%}
+                          {{ item.featured_image | image_url }} {{item.featured_image.width }}w
+                        "
+                        sizes="100vw"
+                        src="{{ item.featured_image | image_url: width: 140 }}"
+                        loading="lazy" class="lazyload {% if item.images.size > 1 %}featured-collection-first-image-{{ section.id }}{% endif %}"
+                        alt="{{ item.featured_image.alt | escape }}"
+                        width="70"
+                        height="{{ 70 | divided_by:item.featured_image.aspect_ratio | ceil }}"
+                      >
                       {% if item.images.size > 1 %}
                         {% for img in item.images %}
                           {% if forloop.index == 2 %}
-                            <img class="lazyload featured-collection-second-image-{{ section.id }}" src="{{ img | image_url }}" alt="image">
+                            {% comment %} <img class="lazyload featured-collection-second-image-{{ section.id }}" src="{{ img | image_url }}" alt="image"> {% endcomment %}
+                            <img
+                              srcset="
+                                {%- if img.width >= 375 -%}{{ img | image_url: width: 375 }} 375w,{%- endif -%}
+                                {%- if img.width >= 750 -%}{{ img | image_url: width: 750 }} 750w,{%- endif -%}
+                                {{ img | image_url }} {{img.width }}w
+                              "
+                              sizes="100vw"
+                              src="{{ img | image_url: width: 140 }}"
+                              loading="lazy" class="lazyload featured-collection-second-image-{{ section.id }}"
+                              alt="{{ img.alt | escape }}"
+                              width="70"
+                              height="{{ 70 | divided_by:img.aspect_ratio | ceil }}"
+                            >
                           {% endif %}
                         {% endfor %}
                       {% endif %}

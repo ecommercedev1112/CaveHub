@@ -41,6 +41,7 @@
   {% if section.settings.image_zoom == 'hover' %}
     <script id="EnableZoomOnHover-main" src="{{ 'magnify.js' | asset_url }}" defer="defer"></script>
   {% endif %}
+  
   {%- if request.design_mode -%}
     <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>
   {%- endif -%}
@@ -70,7 +71,7 @@
     {%- for block in section.blocks -%}
       {%- if block.type == "title" -%}
         <div class="product__title product-title__moblie" {{ block.shopify_attributes }}>
-          <h1>{{ product.title | escape }}</h1>
+          <h2>{{ product.title | escape }}</h2>
           <a href="{{ product.url }}" class="product__title">
             <h2 class="h1">
               {{ product.title | escape }}
@@ -105,7 +106,7 @@
               </p>
             {%- when 'title' -%}
               <div class=" product__title product-title__desktop" {{ block.shopify_attributes }}>
-                <h1>{{ product.title | escape }}</h1>
+                <h2>{{ product.title | escape }}</h2>
                 <a href="{{ product.url }}" class="product__title">
                   <h2 class="h1">
                     {{ product.title | escape }}

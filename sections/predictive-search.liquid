@@ -143,12 +143,18 @@
                   >
                     {%- if product.featured_media != blank -%}
                       <img
+                        srcset="
+                            {%- if product.featured_media.width >= 375 -%}{{ product.featured_media | image_url: width: 375 }} 375w,{%- endif -%}
+                            {%- if product.featured_media.width >= 750 -%}{{ product.featured_media | image_url: width: 750 }} 750w,{%- endif -%}
+                            {{ section.settings.header_image | image_url }} {{product.featured_media.width }}w
+                          "
                         class="predictive-search__image"
                         src="{{ product.featured_media | image_url: width: 150 }}"
                         alt="{{ product.featured_media.alt }}"
                         width="50"
                         height="{{ 50 | divided_by: product.featured_media.preview_image.aspect_ratio }}"
                       >
+                        
                     {%- endif -%}
                     <div class="predictive-search__item-content{% unless settings.predictive_search_show_vendor or settings.predictive_search_show_price %} predictive-search__item-content--centered{% endunless %}">
                       {%- if settings.predictive_search_show_vendor -%}

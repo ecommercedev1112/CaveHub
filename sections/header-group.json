@@ -4,7 +4,103 @@
   "sections": {
     "header": {
       "type": "header",
+      "blocks": {
+        "menupicture_TLhKaJ": {
+          "type": "menupicture",
+          "settings": {
+            "menu_text": "Ramadan Special Offers",
+            "menu_img": "shopify:\/\/shop_images\/81qv7CY6e2L._AC_SL1500.webp",
+            "meun_url": "https:\/\/cavehubs.com\/collections\/ramadan-special-offer",
+            "menu_pic_text": "",
+            "menu_img_2": "shopify:\/\/shop_images\/71swUKIXlsL._AC_SL1500.webp",
+            "meun_url_2": "https:\/\/cavehubs.com\/collections\/ramadan-special-offer",
+            "menu_pic_text2": ""
+          }
+        },
+        "menupicture_7Q9JCX": {
+          "type": "menupicture",
+          "settings": {
+            "menu_text": "Electronics",
+            "menu_img": "shopify:\/\/shop_images\/81e8lc1Bq_L._AC_SL1500.webp",
+            "meun_url": "https:\/\/cavehubs.com\/collections\/video-games",
+            "menu_pic_text": "",
+            "menu_img_2": "shopify:\/\/shop_images\/71O-WL04zrL._AC_SL1500.webp",
+            "meun_url_2": "https:\/\/cavehubs.com\/collections\/video-games",
+            "menu_pic_text2": ""
+          }
+        },
+        "menupicture_PULe3U": {
+          "type": "menupicture",
+          "settings": {
+            "menu_text": "CaveMen",
+            "menu_img": "shopify:\/\/shop_images\/81sIVkA0jOL._AC_SL1500.webp",
+            "meun_url": "https:\/\/cavehubs.com\/collections\/cavemen-autmn-winter",
+            "menu_pic_text": "",
+            "menu_img_2": "shopify:\/\/shop_images\/91ea4LeD9sL._AC_SL1500.webp",
+            "meun_url_2": "https:\/\/cavehubs.com\/collections\/luggage",
+            "menu_pic_text2": ""
+          }
+        },
+        "menupicture_AkfwKt": {
+          "type": "menupicture",
+          "settings": {
+            "menu_text": "CaveWomen",
+            "menu_img": "shopify:\/\/shop_images\/711m8sFvJCL._AC_SL1100.webp",
+            "meun_url": "https:\/\/cavehubs.com\/collections\/cavewomen-watches",
+            "menu_pic_text": "",
+            "menu_img_2": "shopify:\/\/shop_images\/71UVje6ombL._AC_SL1500.webp",
+            "meun_url_2": "https:\/\/cavehubs.com\/collections\/cavewomen-jewellery",
+            "menu_pic_text2": ""
+          }
+        },
+        "menupicture_MqTWVD": {
+          "type": "menupicture",
+          "settings": {
+            "menu_text": "Self-Care",
+            "menu_img": "shopify:\/\/shop_images\/61kqdtuuRCL._AC_SL1500.webp",
+            "meun_url": "https:\/\/cavehubs.com\/collections\/skincare",
+            "menu_pic_text": "",
+            "menu_img_2": "shopify:\/\/shop_images\/71d40nU5RuL._AC_SL1500.webp",
+            "meun_url_2": "https:\/\/cavehubs.com\/collections\/bodycare",
+            "menu_pic_text2": ""
+          }
+        },
+        "menupicture_HrMKm6": {
+          "type": "menupicture",
+          "settings": {
+            "menu_text": "Sports",
+            "menu_img": "shopify:\/\/shop_images\/61VxwM3bP1L._AC_SL1500.webp",
+            "meun_url": "https:\/\/cavehubs.com\/collections\/team-sports",
+            "menu_pic_text": "",
+            "menu_img_2": "shopify:\/\/shop_images\/81jIvG3J3AL._AC_SL1500.webp",
+            "meun_url_2": "https:\/\/cavehubs.com\/collections\/camping-hikiing",
+            "menu_pic_text2": ""
+          }
+        },
+        "menupicture_UgeGf6": {
+          "type": "menupicture",
+          "settings": {
+            "menu_text": "Health & Nutrition",
+            "menu_img": "shopify:\/\/shop_images\/714ZhG7dd5L._AC_SL1500.webp",
+            "meun_url": "https:\/\/cavehubs.com\/collections\/sport-nutrition",
+            "menu_pic_text": "",
+            "menu_img_2": "shopify:\/\/shop_images\/71ZhswbJfLL._AC_SL1500.webp",
+            "meun_url_2": "https:\/\/cavehubs.com\/collections\/massage-relaxation",
+            "menu_pic_text2": ""
+          }
+        }
+      },
+      "block_order": [
+        "menupicture_TLhKaJ",
+        "menupicture_7Q9JCX",
+        "menupicture_PULe3U",
+        "menupicture_AkfwKt",
+        "menupicture_MqTWVD",
+        "menupicture_HrMKm6",
+        "menupicture_UgeGf6"
+      ],
       "settings": {
+        "mobile_logo": "shopify:\/\/shop_images\/WhatsApp_Image_2024-01-30_at_15.36.24_1.jpg",
         "bg_color": "#ffffff",
         "logo_position": "top-left",
         "menu": "main-menu",
@@ -46,7 +142,7 @@
         "8d390f14-36d5-4e75-a70a-2f3e14ce04fe": {
           "type": "text",
           "settings": {
-            "text": "BLACK FRIDAY SALE 50% OFF"
+            "text": "RAMADAN SALE 50% OFF"
           }
         },
         "4e64f7e9-257e-4145-85d1-3ad1ea14767b": {

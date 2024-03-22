@@ -117,7 +117,7 @@
     "
     >
       {% if block.settings.image != blank %}
-        <img
+        {% comment %} <img
           class="tech-collections-grid-item__image"
           style="
             width: {{ block.settings.image_size }}%;
@@ -128,7 +128,27 @@
           "
           src="{{ block.settings.image | img_url: '480x' }}"
           alt="{{ block.settings.title }}"
-        >
+        > {% endcomment %}
+          <img
+            srcset="
+              {%- if block.settings.image.width >= 375 -%}{{ block.settings.image | image_url: width: 375 }} 375w,{%- endif -%}
+              {%- if block.settings.image.width >= 750 -%}{{ block.settings.image | image_url: width: 750 }} 750w,{%- endif -%}
+              {{ block.settings.image | image_url }} {{block.settings.image.width }}w
+            "
+            style="
+            width: {{ block.settings.image_size }}%;
+            object-fit: {{ block.settings.image_fit }};
+            transform: translateX({{ block.settings.image_position_x }}%) translateY({{ block.settings.image_position_y }}%);
+            padding-top: {{ block.settings.image_padding_top }}px;
+            padding-bottom: {{ block.settings.image_padding_bottom }}px;
+          "
+            sizes="100vw"
+            src="{{ block.settings.image | image_url: width: 140 }}"
+            loading="lazy" class="lazyload tech-collections-grid-item__image"
+            alt="{{ block.settings.image.alt | escape }}"
+            width="70"
+            height="{{ 70 | divided_by:block.settings.image.aspect_ratio | ceil }}"
+          >
       {% endif %}
       <div class="tech-collections-grid-item__title">
         {{ block.settings.title }}

@@ -5,7 +5,7 @@
 
 .collection-list-title {
   margin: 0;
-  margin-left: 40px;
+  font-size: 36px;
 }
 
 
@@ -58,6 +58,13 @@
     inset -4px -4px 6px 0 rgba(255, 255, 255, .2),
     inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
 }
+.view-all__button {
+  padding-left: 15px;
+  text-decoration: none;
+  padding-bottom: 20px;
+  color: #007185;
+  height: auto;
+}
 
 @media screen and (min-width: 750px) and (max-width: 989px) {
 
@@ -103,6 +110,9 @@
   .custom-collection-list .mobile .card-wrapper {
     width: 100%;
   }
+  .custom-collection-list .mobile ul {
+    margin-bottom: 0 !important;
+  }
 
   .custom-collection-list .mobile li {
     padding: 0 5px;
@@ -113,11 +123,13 @@
   }
   .collection-list-title {
     margin-left: 0;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
+    white-space: normal;
   }
   .custom-collection-list .card-wrapper .card__content .card__heading a {
     font-size: 12px;
+    text-align: center;
   }
   .custom-btn {
     min-height: 30px;
@@ -129,4 +141,9 @@
   .collection-list-view-all a {
     border-radius: 3px;
   }
+    .view-all__button {
+      font-size: 14px;
+      padding-bottom: 10px;
+
+    }
 }

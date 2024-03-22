@@ -49,16 +49,7 @@
           {{ section.settings.title }}
         </h2>
 
-        {%- if section.settings.show_view_all and show_mobile_slider -%}
-          <a
-            href="{{ routes.collections_url }}"
-            id="ViewAll-{{ section.id }}"
-            class="link underlined-link large-up-hide{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-            aria-labelledby="ViewAll-{{ section.id }} SectionHeading-{{ section.id }}"
-          >
-            {{- 'sections.collection_list.view_all' | t -}}
-          </a>
-        {%- endif -%}
+       
       </div>
     {%- endunless -%}
 
@@ -75,7 +66,7 @@
             assign columns = 3
           endif
         -%}
-        {%- for block in section.blocks -%}
+        {%- for block in section.blocks limit: 7 -%}
           <li
             id="Slide-{{ section.id }}-{{ forloop.index }}"
             class="collection-list__item grid__item{% if show_mobile_slider %} slider__slide{% endif %}{% if block.settings.collection.featured_image == nil %} collection-list__item--no-media{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
@@ -153,6 +144,16 @@
           {%- endfor -%}
         </div>
       </ul>
+      {%- if section.settings.show_view_all and show_mobile_slider -%}
+        <a
+          href="{{ routes.collections_url }}"
+          id="ViewAll-{{ section.id }}"
+          class="view-all__button link underlined-link large-up-hide{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+          aria-labelledby="ViewAll-{{ section.id }} SectionHeading-{{ section.id }}"
+        >
+          {{- 'sections.collection_list.view_all' | t -}}
+        </a>
+      {%- endif -%}
       
     </slider-component>
 
@@ -237,7 +238,7 @@
       "type": "range",
       "id": "columns_desktop",
       "min": 1,
-      "max": 5,
+      "max": 7,
       "step": 1,
       "default": 3,
       "label": "t:sections.collection-list.settings.columns_desktop.label"

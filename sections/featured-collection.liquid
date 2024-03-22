@@ -35,7 +35,7 @@
   .custom-mobile.mobile {
     display: none;
   }
-  @media(max-width: 768px) {
+    @media(max-width: 768px) {
     .custom-mobile.desktop {
       display: none; 
     }
@@ -48,8 +48,36 @@
     .custom-mobile.mobile {
       display: block;
     }
-  }
+      }
 {%- endstyle -%}
+<script>
+  // ----------------- implement lazy class --------------------------------//
+
+  var lazyImages = [].slice.call(document.querySelectorAll("li.lazy"));
+
+  console.log("lazy trigered!!!");
+  if ("IntersectionObserver" in window) {
+    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          let lazyImage = entry.target;
+          lazyImage.src = lazyImage.dataset.src;
+          lazyImage.srcset = lazyImage.dataset.srcset;
+          lazyImage.classList.remove("lazy");
+          lazyImageObserver.unobserve(lazyImage);
+        }
+      });
+    });
+
+    lazyImages.forEach(function(lazyImage) {
+      lazyImageObserver.observe(lazyImage);
+    });
+  } else {
+    // Possibly fall back to event handlers here
+  }
+
+// -----------------------------------------------------------------------//
+</script>
 
 {%- liquid
   assign products_to_display = section.settings.collection.all_products_count
@@ -75,11 +103,26 @@
   <div class="collection section-{{ section.id }}-padding{% if section.settings.full_width %} collection--full-width{% endif %}">
     <div class="collection__title title-wrapper title-wrapper--no-top-margin page-width{% if show_mobile_slider %} title-wrapper--self-padded-tablet-down{% endif %}{% if show_desktop_slider %} collection__title--desktop-slider{% endif %}">
       {% if section.settings.header_image != blank %}
-        <img
+        {% comment %} <img
             src="{{ section.settings.header_image | image_url: width: 140 }}"
             alt="{{ section.settings.header_image | escape }}"
             loading="lazy" class="lazyload"
-          >
+            width="auto"
+            height="auto"
+          > {% endcomment %}
+            <img
+              srcset="
+                {%- if section.settings.header_image.width >= 375 -%}{{ section.settings.header_image | image_url: width: 375 }} 375w,{%- endif -%}
+                {%- if section.settings.header_image.width >= 750 -%}{{ section.settings.header_image | image_url: width: 750 }} 750w,{%- endif -%}
+                {{ section.settings.header_image | image_url }} {{section.settings.header_image.width }}w
+              "
+              sizes="100vw"
+              src="{{ section.settings.header_image | image_url: width: 140 }}"
+              loading="lazy" class="lazyload"
+              alt="{{ section.settings.header_image.alt | escape }}"
+              width="70"
+              height="{{ 70 | divided_by:section.settings.header_image.aspect_ratio | ceil }}"
+            >
       {% endif %}
       {%- if section.settings.title != blank -%}
         <h2 class="title inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
@@ -212,8 +255,8 @@
         {% if show_mobile_slider or show_desktop_slider %} 
         <div class="swiper-wrapper">
         {% endif %}
-        {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
-          <li
+            {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
+            <li
             id="Slide-{{ section.id }}-{{ forloop.index }}"
             class="grid__item 
             {% if show_mobile_slider or show_desktop_slider %} swipelect__slide swiper-slide{% endif %}
@@ -223,16 +266,16 @@
               style="--animation-order: {{ forloop.index }};"
             {% endif %}
           >
-            {% render 'card-product',
-              card_product: product,
-              media_aspect_ratio: section.settings.image_ratio,
-              image_shape: section.settings.image_shape,
-              show_secondary_image: section.settings.show_secondary_image,
-              show_vendor: section.settings.show_vendor,
-              show_rating: section.settings.show_rating,
-              show_quick_add: section.settings.enable_quick_add,
-              section_id: section.id
-            %}
+              {% render 'card-product',
+                card_product: product,
+                media_aspect_ratio: section.settings.image_ratio,
+                image_shape: section.settings.image_shape,
+                show_secondary_image: section.settings.show_secondary_image,
+                show_vendor: section.settings.show_vendor,
+                show_rating: section.settings.show_rating,
+                show_quick_add: section.settings.enable_quick_add,
+                section_id: section.id
+%}
           </li>
         {%- else -%}
           {%- for i in (1..4) -%}
@@ -251,9 +294,9 @@
             </li>
           {%- endfor -%}
         {%- endfor -%}
-        {% if show_mobile_slider or show_desktop_slider %} 
+        {% if show_mobile_slider or show_desktop_slider %}
         </div>
-        {% endif %}
+      {% endif %}
       </ul>
     </slider-component>
     

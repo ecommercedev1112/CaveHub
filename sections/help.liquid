@@ -1,0 +1,146 @@
+{% style %}
+    .help-section {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{section.settings.padding_bottom }}px;
+    }
+    @media(max-width:768px) {
+        .help-section {
+            padding-top: {{ section.settings.mobile_padding_top }}px;
+            padding-bottom: {{section.settings.mobile_padding_bottom }}px;
+        }
+    }
+{%endstyle %}
+
+{{ 'section-help.css' | asset_url | stylesheet_tag }}
+
+<div class="section-id-{{ section.id }}">
+    <h1 class="help-title">{{ section.settings.title }}</h1>
+    <div class="help-center">
+        <div class="logo">
+            <img srcset="
+                        {%- if section.settings.i_logo.width >= 375 -%}{{ section.settings.i_logo | image_url: width: 375 }} 375w,{%- endif -%}
+                        {%- if section.settings.i_logo.width >= 750 -%}{{ section.settings.i_logo| image_url: width: 750 }} 750w,{%- endif -%}
+                        {{ section.settings.i_logo | image_url }} {{ section.settings.i_logo.width }}w
+                        " href="{{ section.settings.help_center }}"
+                src="{{ section.settings.i_logo | img_url: medium }}" alt="image" class="i-logo lazyload">
+        </div>
+        <div class="text">
+            <h2 class="help-subtitle" href="{{ section.settings.help_center }}">{{ section.settings.subtitle_1 }}</h2>
+        </div>
+    </div>
+    <div class="help-center">
+        <div class="logo">
+            <img srcset="
+                        {%- if section.settings.e_logo.width >= 375 -%}{{ section.settings.e_logo | image_url: width: 375 }} 375w,{%- endif -%}
+                        {%- if section.settings.e_logo.width >= 750 -%}{{ section.settings.e_logo | image_url: width: 750 }} 750w,{%- endif -%}
+                        {{ section.settings.e_logo | image_url }} {{ section.settings.e_logo.width }}w
+                        " href="{{ section.settings.help_email }}"
+                src="{{ section.settings.e_logo | img_url: medium }}" alt="image" class="e-logo lazyload">
+        </div>
+        <div class="text">
+            <h2 class="help-subtitle" href="{{ section.settings.email }}">{{ section.settings.subtitle_2 }}</h2>
+        </div>
+    </div>
+</div>
+{% schema %}
+    {
+        "name": "help section",
+        "class": "help-section",
+        "settings": [   
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title",
+                "default": "We're Always Here to Help"
+            },
+            {
+                "type": "text",
+                "id": "subtitle_1",
+                "label": "Subtitle for Center",
+                "default": "Help Center"
+            },
+            {
+                "type": "image_picker",
+                "id": "i_logo",
+                "label": "Logo"
+            },
+            {
+                "type": "text",
+                "id": "text1",
+                "label": "Text",
+                "default": "help center"
+            },
+            {
+                "type": "url",
+                "id": "help_center",
+                "label": "Help center link"
+            },
+            {
+                "type": "text",
+                "id": "subtitle_2",
+                "label": "Help Email"
+            },
+            {
+                "type": "image_picker",
+                "id": "e-_logo",
+                "label": "Logo"
+            },
+            {
+                "type": "text",
+                "id": "text2",
+                "label": "Text",
+                "default": "help email"
+            },
+            {
+                "type": "url",
+                "id": "help_email",
+                "label": "Help Email"
+            },
+            {
+                "type": "range",
+                "id": "padding_top",
+                "min": 20,
+                "max": 80,
+                "step": 10,
+                "unit": "px",
+                "label": "Padding top",
+                "default": 40
+            },
+            {
+                "type": "range",
+                "id": "padding_bottom",
+                "min": 20,
+                "max": 80,
+                "step": 10,
+                "unit": "px",
+                "label": "Padding bottom",
+                "default": 40
+            },
+            {
+                "type": "range",
+                "id": "mobile_padding_top",
+                "min": 10,
+                "max": 40,
+                "step": 5,
+                "unit": "px",
+                "label": "Mobile padding top",
+                "default": 20
+            },
+            {
+                "type": "range",
+                "id": "mobile_padding_bottom",
+                "min": 10,
+                "max": 40,
+                "step": 5,
+                "unit": "px",
+                "label": "Mobile padding bottom",
+                "default": 20
+            }
+        ],
+        "presets": [
+            {
+                "name": "Help section"
+            }
+        ]
+    }
+{% endschema %}

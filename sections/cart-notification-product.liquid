@@ -3,13 +3,27 @@
     <div id="cart-notification-product-{{ item.key }}" class="cart-item">
       {%- if item.image -%}
         <div class="cart-notification-product__image global-media-settings">
-          <img
+          {% comment %} <img
             src="{{ item.image | image_url: width: 140 }}"
             alt="{{ item.image.alt | escape }}"
             width="70"
             height="{{ 70 | divided_by: item.image.aspect_ratio | ceil }}"
             loading="lazy" class="lazyload"
-          >
+          > {% endcomment %}
+            <img
+              srcset="
+                {%- if item.image.width >= 375 -%}{{ item.image | image_url: width: 375 }} 375w,{%- endif -%}
+                {%- if item.image.width >= 750 -%}{{ item.image | image_url: width: 750 }} 750w,{%- endif -%}
+                {{ item.image | image_url }} {{ item.image.width }}w
+              "
+              sizes="100vw"
+              src="{{ item.image | image_url: width: 140 }}"
+              loading="lazy" class="lazyload"
+              alt="{{ item.image.alt | escape }}"
+              width="70"
+              height="{{ 70 | divided_by: item.image.aspect_ratio | ceil }}"
+            >
+            
         </div>
       {%- endif -%}
       <div>

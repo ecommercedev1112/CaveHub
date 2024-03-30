@@ -88,6 +88,7 @@
         "1da0b7ce-5926-4349-b370-9f0be5573d57",
         "f2105366-9f07-4886-a86a-17f6fde90586"
       ],
+      "disabled": true,
       "settings": {
         "heading": "<p>Trusted by Many CavePeople 🏠<\/p>",
         "heading_custom": false,
@@ -227,6 +228,7 @@
         "2e67a0fb-47f8-4e6c-be77-8127f3e41549",
         "2afee2ac-c9b8-4ec5-962e-460cee1534a9"
       ],
+      "disabled": true,
       "settings": {
         "heading": "",
         "heading_custom": false,

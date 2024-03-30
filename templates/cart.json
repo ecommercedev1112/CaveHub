@@ -35,8 +35,8 @@
       "settings": {
         "heading": "Products you might like",
         "heading_size": "h1",
-        "products_to_show": 50,
-        "columns_desktop": 5,
+        "products_to_show": 24,
+        "columns_desktop": 3,
         "color_scheme": "",
         "image_ratio": "adapt",
         "image_shape": "default",

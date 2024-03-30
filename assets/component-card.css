@@ -500,7 +500,7 @@
 
 .card__information a.show-review {
   min-height: unset !important;
-  max-height: 40px !important;
+  max-height: 60px !important;
 }
 .product-list .card__information a.show-review {
   max-height: 60px !important;
@@ -599,7 +599,7 @@
   width: 100%;
   justify-content: start;
   position: absolute;
-  top: -13%;
+  top: -15%;
   left: 2%;
 }
 
@@ -736,7 +736,7 @@
   }
 
   .card-wrapper .card_text.card__content {
-    height: 115px;
+    height: 90px;
     padding: 5px 4px;
   } 
 
@@ -822,7 +822,7 @@
     width: 100%;
     margin-top: 3px !important;
     display: flex;
-    gap: 5px;
+    gap: 3px;
     align-items: center;
     justify-content: start;
   }

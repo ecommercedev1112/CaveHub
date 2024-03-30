@@ -572,7 +572,13 @@
     {%- endif -%}
   </div>
 
+  
+  
   {% render 'product-media-modal' variant_images: variant_images %}
+  
+ 
+                        
+                          
 
   {% assign popups = section.blocks | where: 'type', 'popup' %}
   {%- for block in popups -%}
@@ -693,6 +699,10 @@
   </script>
   </div>
 </section>
+
+{% render 'recently-viewed' product: product %}
+
+
 
 {% schema %}
 {

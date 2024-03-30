@@ -1,0 +1,429 @@
+{% style %}
+  @media only screen and (min-width: 750px) {
+    .js-recentPdpBlock {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      column-gap: var(--grid-desktop-horizontal-spacing);
+    }
+  }
+
+  
+  .recently-title {
+    padding: 0 50px;
+    background: #ddd;
+  }
+  .c-recently .title {
+    margin: 0;
+    padding-left: 10px;
+    padding-bottom: 20px;
+    font-size: 28px;
+    padding-top: 30px;
+  }
+  .c-recently.js-recentPdpBlock {
+    padding: 20px 70px;
+    padding-bottom: 50px;
+    background: #ddd;
+    margin-bottom: 80px;
+  }
+  .c-recently .c-product {
+    background-color: #f5f5f5;
+  }
+  .c-10 {
+    padding: 0 10px; 
+  } 
+  .custom-free-shipping.c-10 {
+    padding-bottom: 10px;
+  }
+  .recently-title h2 {
+    font-size: 24px;
+    border-top: 1px solid #ddd;
+    padding-top: 50px;
+  }
+  /* .js-recentPdpBlock {
+    display: flex;
+    flex-wrap: wrap !important;
+} */
+
+  .c-product {
+    cursor: pointer;
+  }
+
+  .c-product img {
+    height: 280px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .c-product p.c-productPrice {
+    line-height: 0px;
+    color: #000;
+    font-size: 24px;
+    font-weight: 500;
+  }
+  .c-product p.c-productPrice span {
+    font-weight: 400;
+    font-size: 16px;
+  } 
+
+  .c-product h3.c-product__title {
+    max-height: 50px;
+    overflow: hidden;
+    font-size: 22px;
+    padding-bottom: 10px;
+  }
+
+  .c-product h3.c-product__title a {
+    color: black;
+    text-decoration: none;
+    display: block;
+    min-height: 60px;
+  }
+
+  a.c-product__url {
+    position: relative;
+  }
+  .custom-free-shipping {
+    margin-top: 2px !important;
+    font-weight: 500;
+    letter-spacing: 1;
+    display: block;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 500;
+    color: #4ecd4b;
+}
+.c-product .custom-sold-out {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    gap: 10px;
+    justify-content: start;
+    width: 100%;
+    text-align: left;
+    justify-content: start;
+    gap: 10px;
+    width: 100%;
+    margin-top: 0 !important;
+  }
+  .custom-sold-out span {
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0;
+  }
+  .custom-sold-out span{
+    font-size: 16px;
+    margin: 0;
+    width: 100%;
+    letter-spacing: 0;
+  }
+  .express-badge {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: start;
+}
+.express-badge .express {
+    position: relative !important;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 600;
+    width: max-content;
+    height: max-content;
+    background: #7069bc;
+    padding: 2px 10px;
+    border-radius: 25px;
+    font-style: italic;
+    letter-spacing: 0;
+    color: #fff;
+    text-decoration: none;
+    overflow: hidden;
+  }
+  .express-badge .express::after {
+    position: absolute;
+    content: '';
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    animation: express 5s ease-in-out infinite;
+  }
+  @-webkit-keyframes express {
+      0% { -webkit-transform: scale(0) rotate(45deg); opacity: 0; }
+      80% { -webkit-transform: scale(0) rotate(45deg); opacity: 0.5; }
+      81% { -webkit-transform: scale(4) rotate(45deg); opacity: 1; }
+      100% { -webkit-transform: scale(50) rotate(45deg); opacity: 0; }
+  }
+  .express-badge .express-text {
+    font-size: 14px;
+    font-weight: 400;
+    display: inline-block;
+  }
+
+
+  @media only screen and (max-width: 768px) {
+    /* Code by https://websensepro.com */
+    .js-recentPdpBlock {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: var(--grid-desktop-horizontal-spacing);
+      padding: 10px;
+    }
+    .c-product img {
+      height: 150px;
+    }
+    .c-recently .title {
+      font-size: 24px;
+      padding: 20px 0;
+    }
+    #Recent {
+      margin-bottom: 10px;
+    }
+    .c-product h3.c-product__title {
+      margin: 0;
+    }
+    .c-product h3.c-product__title a {
+      font-size: 14px;
+      max-height: 40px;
+      min-height: unset;
+      overflow: hidden;
+    }
+    .c-product p.c-productPrice {
+      font-size: 16px;
+      margin: 0;
+      padding-bottom: 10px;
+    }
+    .custom-free-shipping.c-10 {
+      font-size: 12px;
+      padding-bottom: 5px;
+    }
+    .c-product p.c-productPrice span {
+      font-size: 12px;
+      margin: 0;
+      padding-bottom: 10px;
+    }
+    .c-10 {
+      padding: 0 5px;
+    }
+    .c-recently.js-recentPdpBlock {
+      margin-bottom: 0;
+      padding: 0 5px;
+      gap: 5px;
+    }
+    .recently-title {
+      padding: 0 20px;
+      text-align: center;
+    }
+    .c-product .custom-sold-out {
+      gap: 5px;
+    }
+    .custom-sold-out span {
+      font-size: 12px;
+    }
+
+  }
+{% endstyle %}
+
+{%- liquid
+  if use_variant
+    assign target = product.selected_or_first_available_variant
+  else
+    assign target = product
+  endif
+
+  assign price = target.price | default: 1999
+  assign price_min = product.price_min
+  assign price_max = product.price_max
+  assign money_price = price | money
+  assign money_price_min = price_min | money
+  assign money_price_max = price_max | money
+  if settings.currency_code_enabled
+    assign money_price = price | money_without_currency
+    assign money_price_min = price_min | money_with_currency
+    assign money_price_max = price_max | money_with_currency
+  endif
+
+  if target == product and product.price_varies
+    assign money_price = 'products.product.price.from_price_html' | t: price: money_price
+  endif
+
+  assign money_real = money_price | split: " " | last | split: '.'  | first 
+
+-%}
+<script>
+  // First Block
+  function setRecentlyViewedPdp() {
+    const pdpData = {
+      productTitle: `{{ product.title }}`,
+      productImg: `{{ product.featured_image | img_url: '' }}`,
+      productPrice: `{{ money_real }}`,
+      productUrl: `{{ product.url }}`,
+    };
+
+    const productArr = [];
+    let jsonResp, jsonRespArr, jsonRespArrStr;
+    const numberOfProduct = 4;
+    productArr.push(pdpData);
+    const currPdpTitle = pdpData.productTitle;
+    const pdpDataString = JSON.stringify(productArr);
+    const localData = localStorage.getItem('recently_viewed');
+    console.log(localData, "localData");
+
+    if (localData == null) {
+      localStorage.setItem('recently_viewed', pdpDataString);
+    }
+    else if (localData != null) {
+      const oldPdpData = localStorage.getItem('recently_viewed');
+      const countPdpData = (oldPdpData.match(/productTitle/g) || []).length;
+      const reVisitPdp = oldPdpData.includes(currPdpTitle);
+      if (countPdpData < numberOfProduct && reVisitPdp == false) {
+        jsonResp = JSON.parse(oldPdpData);
+        jsonRespArr = jsonResp.concat(productArr);
+        jsonRespArrStr = JSON.stringify(jsonRespArr);
+        localStorage.setItem('recently_viewed', jsonRespArrStr);
+      }
+      else if (countPdpData >= numberOfProduct && reVisitPdp == false) {
+        jsonResp = JSON.parse(oldPdpData);
+        jsonResp.shift();
+        jsonRespArr = jsonResp.concat(productArr);
+        jsonRespArr = JSON.stringify(jsonRespArr);
+        localStorage.setItem('recently_viewed', jsonRespArr);
+      }
+    }
+  }
+
+  setRecentlyViewedPdp();
+  const localViewed = localStorage.recently_viewed;
+</script>
+
+<div class="c-recently recently-title">
+  <h2 class="title inline-richtext h2 scroll-trigger animate--slide-in"><b>Recently Viewed</b></h2>
+</div>
+<div class="c-recently js-recentPdpBlock"></div>
+
+<script>
+  function getRecentPdp() {
+    const pdpData = JSON.parse(localStorage.getItem('recently_viewed'));
+    console.log(pdpData);
+    const recentViewHtml = [];
+    const i = 100;
+    pdpData.forEach(function (item, index) {
+      let randomNumber = Math.floor(Math.random() * (400 - 40 + 1) + 40 + index*100);
+      let text1 = "";
+      if(randomNumber > 50 && randomNumber < 150) {
+         text1 =  "50"
+      }
+      if(randomNumber > 150 && randomNumber < 350) {
+         text1 =  "100"
+      }
+      if(randomNumber > 350 && randomNumber < 600) {
+         text1 =  "200"
+      }
+      if(randomNumber > 600 && randomNumber < 1000) {
+         text1 =  "300"
+      }
+      recentViewHtml.push(`
+                    <section id="Recent">
+                    <div class="c-product">
+                        <div class="c-product__img">
+                        <a href="${item.productUrl}"><img src='${item.productImg}'/></a>
+                        </div>
+                        <h3 class="c-product__title c-10">
+                            <a class="c-product__url" href="${item.productUrl}">
+                            ${item.productTitle}
+                            </a>
+                        </h3>
+                        <p class="a c-productPrice c-10"><span>AED </span> ${item.productPrice}</p>
+                        <p class="custom-sold-out c-10 ${randomNumber}" aria-hidden="true">
+                            {% comment %} <svg  version="1.0" xmlns="http://www.w3.org/2000/svg"  width="20px" height="20px" viewBox="0 0 225.000000 225.000000"  preserveAspectRatio="xMidYMid meet">  <g transform="translate(0.000000,225.000000) scale(0.100000,-0.100000)" fill="#4ecd4c" stroke="none"> <path d="M138 2009 c-21 -12 -24 -49 -6 -67 8 -8 63 -12 183 -12 l172 0 77 -292 c43 -161 86 -322 96 -358 10 -36 44 -164 75 -285 61 -235 85 -291 139 -324 33 -21 44 -21 540 -21 559 0 541 -2 590 63 32 42 40 81 72 362 14 127 33 299 43 384 17 149 17 155 -1 173 -17 17 -54 18 -742 18 l-724 0 -11 33 c-5 17 -27 95 -47 172 -20 77 -44 146 -52 153 -20 15 -378 17 -404 1z m1902 -474 c0 -14 -18 -183 -40 -377 -41 -353 -51 -397 -89 -418 -13 -6 -189 -10 -499 -10 l-479 0 -26 26 c-31 31 -24 10 -87 254 -114 437 -140 537 -140 543 0 4 306 7 680 7 l680 0 0 -25z"/> <path d="M1332 1397 c-6 -7 -13 -56 -14 -108 l-3 -94 -94 -3 c-101 -3 -121 -11 -121 -48 0 -33 14 -38 120 -44 l95 -5 3 -95 c2 -75 6 -98 19 -107 22 -17 28 -16 47 3 12 12 16 37 16 110 l0 94 94 0 c100 0 126 10 126 50 0 30 -32 40 -129 40 l-91 0 0 100 c0 88 -2 100 -19 110 -26 13 -36 13 -49 -3z"/> <path d="M1035 530 c-69 -28 -96 -127 -53 -190 30 -44 61 -60 117 -60 37 0 49 5 82 39 35 35 39 44 39 91 0 47 -4 56 -39 91 -33 34 -45 39 -82 38 -24 0 -53 -4 -64 -9z"/> <path d="M1589 501 c-35 -35 -39 -44 -39 -91 0 -47 4 -56 39 -91 32 -33 45 -39 80 -39 54 0 97 22 121 63 55 90 -11 197 -121 197 -35 0 -48 -6 -80 -39z"/> </g> </svg>  {% endcomment %}
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="20px" height="20px" viewBox="0 0 256 256" xml:space="preserve">
+                              <defs>
+                              </defs>
+                              <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)" >
+                                <path d="M 73.713 65.44 H 27.689 c -3.566 0 -6.377 -2.578 -6.686 -6.13 c -0.21 -2.426 0.807 -4.605 2.592 -5.939 L 16.381 21.07 c -0.199 -0.889 0.017 -1.819 0.586 -2.53 s 1.431 -1.124 2.341 -1.124 H 87 c 0.972 0 1.884 0.471 2.446 1.263 c 0.563 0.792 0.706 1.808 0.386 2.725 l -7.798 22.344 c -1.091 3.13 -3.798 5.429 -7.063 5.999 l -47.389 8.281 c -0.011 0.001 -0.021 0.003 -0.032 0.005 c -0.228 0.04 -0.623 0.126 -0.568 0.759 c 0.056 0.648 0.48 0.648 0.708 0.648 h 46.024 c 1.657 0 3 1.343 3 3 S 75.37 65.44 73.713 65.44 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #7069bc; fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                <circle cx="28.25" cy="75.8" r="6.5" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #7069bc; fill-rule: nonzero; opacity: 1;" transform="  matrix(1 0 0 1 0 0) "/>
+                                <circle cx="68.28999999999999" cy="75.8" r="6.5" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #7069bc; fill-rule: nonzero; opacity: 1;" transform="  matrix(1 0 0 1 0 0) "/>
+                                <path d="M 19.306 23.417 c -1.374 0 -2.613 -0.95 -2.925 -2.347 l -1.375 -6.155 c -0.554 -2.48 -2.716 -4.212 -5.258 -4.212 H 3 c -1.657 0 -3 -1.343 -3 -3 s 1.343 -3 3 -3 h 6.749 c 5.372 0 9.942 3.662 11.113 8.904 l 1.375 6.155 c 0.361 1.617 -0.657 3.221 -2.274 3.582 C 19.742 23.393 19.522 23.417 19.306 23.417 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #7069bc; fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                              </g>
+                            </svg>
+
+                            <span> ${text1}+ sold recently</span>
+                          </p>
+                        
+                        {% comment %} {% assign min_number  = 50 %}
+                        {% assign max_number  = 400 %}
+                        {% assign diff_sold = max_number | minus: min_number %}
+                        {% assign random_number = "now" | date: "%N" | modulo: diff_sold | plus: min_number %}
+                        {% assign def = index | times: 100 %}
+                        {% assign random_val = random_number | plus: def %} {% endcomment %}
+                        
+                        {% comment %} {% elsif randomNumber < 200 %}
+                          <p class="custom-sold-out c-10" aria-hidden="true">
+                            {% comment %} <svg  version="1.0" xmlns="http://www.w3.org/2000/svg"  width="20px" height="20px" viewBox="0 0 225.000000 225.000000"  preserveAspectRatio="xMidYMid meet">  <g transform="translate(0.000000,225.000000) scale(0.100000,-0.100000)" fill="#4ecd4c" stroke="none"> <path d="M138 2009 c-21 -12 -24 -49 -6 -67 8 -8 63 -12 183 -12 l172 0 77 -292 c43 -161 86 -322 96 -358 10 -36 44 -164 75 -285 61 -235 85 -291 139 -324 33 -21 44 -21 540 -21 559 0 541 -2 590 63 32 42 40 81 72 362 14 127 33 299 43 384 17 149 17 155 -1 173 -17 17 -54 18 -742 18 l-724 0 -11 33 c-5 17 -27 95 -47 172 -20 77 -44 146 -52 153 -20 15 -378 17 -404 1z m1902 -474 c0 -14 -18 -183 -40 -377 -41 -353 -51 -397 -89 -418 -13 -6 -189 -10 -499 -10 l-479 0 -26 26 c-31 31 -24 10 -87 254 -114 437 -140 537 -140 543 0 4 306 7 680 7 l680 0 0 -25z"/> <path d="M1332 1397 c-6 -7 -13 -56 -14 -108 l-3 -94 -94 -3 c-101 -3 -121 -11 -121 -48 0 -33 14 -38 120 -44 l95 -5 3 -95 c2 -75 6 -98 19 -107 22 -17 28 -16 47 3 12 12 16 37 16 110 l0 94 94 0 c100 0 126 10 126 50 0 30 -32 40 -129 40 l-91 0 0 100 c0 88 -2 100 -19 110 -26 13 -36 13 -49 -3z"/> <path d="M1035 530 c-69 -28 -96 -127 -53 -190 30 -44 61 -60 117 -60 37 0 49 5 82 39 35 35 39 44 39 91 0 47 -4 56 -39 91 -33 34 -45 39 -82 38 -24 0 -53 -4 -64 -9z"/> <path d="M1589 501 c-35 -35 -39 -44 -39 -91 0 -47 4 -56 39 -91 32 -33 45 -39 80 -39 54 0 97 22 121 63 55 90 -11 197 -121 197 -35 0 -48 -6 -80 -39z"/> </g> </svg>  {% endcomment %}
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="20px" height="20px" viewBox="0 0 256 256" xml:space="preserve">
+                              <defs>
+                              </defs>
+                              <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)" >
+                                <path d="M 73.713 65.44 H 27.689 c -3.566 0 -6.377 -2.578 -6.686 -6.13 c -0.21 -2.426 0.807 -4.605 2.592 -5.939 L 16.381 21.07 c -0.199 -0.889 0.017 -1.819 0.586 -2.53 s 1.431 -1.124 2.341 -1.124 H 87 c 0.972 0 1.884 0.471 2.446 1.263 c 0.563 0.792 0.706 1.808 0.386 2.725 l -7.798 22.344 c -1.091 3.13 -3.798 5.429 -7.063 5.999 l -47.389 8.281 c -0.011 0.001 -0.021 0.003 -0.032 0.005 c -0.228 0.04 -0.623 0.126 -0.568 0.759 c 0.056 0.648 0.48 0.648 0.708 0.648 h 46.024 c 1.657 0 3 1.343 3 3 S 75.37 65.44 73.713 65.44 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #7069bc; fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                <circle cx="28.25" cy="75.8" r="6.5" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #7069bc; fill-rule: nonzero; opacity: 1;" transform="  matrix(1 0 0 1 0 0) "/>
+                                <circle cx="68.28999999999999" cy="75.8" r="6.5" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #7069bc; fill-rule: nonzero; opacity: 1;" transform="  matrix(1 0 0 1 0 0) "/>
+                                <path d="M 19.306 23.417 c -1.374 0 -2.613 -0.95 -2.925 -2.347 l -1.375 -6.155 c -0.554 -2.48 -2.716 -4.212 -5.258 -4.212 H 3 c -1.657 0 -3 -1.343 -3 -3 s 1.343 -3 3 -3 h 6.749 c 5.372 0 9.942 3.662 11.113 8.904 l 1.375 6.155 c 0.361 1.617 -0.657 3.221 -2.274 3.582 C 19.742 23.393 19.522 23.417 19.306 23.417 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #7069bc; fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                              </g>
+                            </svg>
+                            <span> 100+ sold recently</span>
+                          </p>
+                        {% elsif randomNumber < 300 %}
+                          <p class="custom-sold-out c-10" aria-hidden="true">
+                            {% comment %} <svg  version="1.0" xmlns="http://www.w3.org/2000/svg"  width="20px" height="20px" viewBox="0 0 225.000000 225.000000"  preserveAspectRatio="xMidYMid meet">  <g transform="translate(0.000000,225.000000) scale(0.100000,-0.100000)" fill="#4ecd4c" stroke="none"> <path d="M138 2009 c-21 -12 -24 -49 -6 -67 8 -8 63 -12 183 -12 l172 0 77 -292 c43 -161 86 -322 96 -358 10 -36 44 -164 75 -285 61 -235 85 -291 139 -324 33 -21 44 -21 540 -21 559 0 541 -2 590 63 32 42 40 81 72 362 14 127 33 299 43 384 17 149 17 155 -1 173 -17 17 -54 18 -742 18 l-724 0 -11 33 c-5 17 -27 95 -47 172 -20 77 -44 146 -52 153 -20 15 -378 17 -404 1z m1902 -474 c0 -14 -18 -183 -40 -377 -41 -353 -51 -397 -89 -418 -13 -6 -189 -10 -499 -10 l-479 0 -26 26 c-31 31 -24 10 -87 254 -114 437 -140 537 -140 543 0 4 306 7 680 7 l680 0 0 -25z"/> <path d="M1332 1397 c-6 -7 -13 -56 -14 -108 l-3 -94 -94 -3 c-101 -3 -121 -11 -121 -48 0 -33 14 -38 120 -44 l95 -5 3 -95 c2 -75 6 -98 19 -107 22 -17 28 -16 47 3 12 12 16 37 16 110 l0 94 94 0 c100 0 126 10 126 50 0 30 -32 40 -129 40 l-91 0 0 100 c0 88 -2 100 -19 110 -26 13 -36 13 -49 -3z"/> <path d="M1035 530 c-69 -28 -96 -127 -53 -190 30 -44 61 -60 117 -60 37 0 49 5 82 39 35 35 39 44 39 91 0 47 -4 56 -39 91 -33 34 -45 39 -82 38 -24 0 -53 -4 -64 -9z"/> <path d="M1589 501 c-35 -35 -39 -44 -39 -91 0 -47 4 -56 39 -91 32 -33 45 -39 80 -39 54 0 97 22 121 63 55 90 -11 197 -121 197 -35 0 -48 -6 -80 -39z"/> </g> </svg>  {% endcomment %}
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="20px" height="20px" viewBox="0 0 256 256" xml:space="preserve">
+                              <defs>
+                              </defs>
+                              <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)" >
+                                <path d="M 73.713 65.44 H 27.689 c -3.566 0 -6.377 -2.578 -6.686 -6.13 c -0.21 -2.426 0.807 -4.605 2.592 -5.939 L 16.381 21.07 c -0.199 -0.889 0.017 -1.819 0.586 -2.53 s 1.431 -1.124 2.341 -1.124 H 87 c 0.972 0 1.884 0.471 2.446 1.263 c 0.563 0.792 0.706 1.808 0.386 2.725 l -7.798 22.344 c -1.091 3.13 -3.798 5.429 -7.063 5.999 l -47.389 8.281 c -0.011 0.001 -0.021 0.003 -0.032 0.005 c -0.228 0.04 -0.623 0.126 -0.568 0.759 c 0.056 0.648 0.48 0.648 0.708 0.648 h 46.024 c 1.657 0 3 1.343 3 3 S 75.37 65.44 73.713 65.44 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #7069bc; fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                <circle cx="28.25" cy="75.8" r="6.5" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #7069bc; fill-rule: nonzero; opacity: 1;" transform="  matrix(1 0 0 1 0 0) "/>
+                                <circle cx="68.28999999999999" cy="75.8" r="6.5" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #7069bc; fill-rule: nonzero; opacity: 1;" transform="  matrix(1 0 0 1 0 0) "/>
+                                <path d="M 19.306 23.417 c -1.374 0 -2.613 -0.95 -2.925 -2.347 l -1.375 -6.155 c -0.554 -2.48 -2.716 -4.212 -5.258 -4.212 H 3 c -1.657 0 -3 -1.343 -3 -3 s 1.343 -3 3 -3 h 6.749 c 5.372 0 9.942 3.662 11.113 8.904 l 1.375 6.155 c 0.361 1.617 -0.657 3.221 -2.274 3.582 C 19.742 23.393 19.522 23.417 19.306 23.417 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #7069bc; fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                              </g>
+                            </svg>
+                            <span> 200+ sold recently</span>
+                          </p>
+                        {% elsif randomNumber < 400 %} 
+                          <p class="custom-sold-out c-10 {{ random_val}} ${randomNumber}" aria-hidden="true">
+                            {% comment %} <svg  version="1.0" xmlns="http://www.w3.org/2000/svg"  width="20px" height="20px" viewBox="0 0 225.000000 225.000000"  preserveAspectRatio="xMidYMid meet">  <g transform="translate(0.000000,225.000000) scale(0.100000,-0.100000)" fill="#4ecd4c" stroke="none"> <path d="M138 2009 c-21 -12 -24 -49 -6 -67 8 -8 63 -12 183 -12 l172 0 77 -292 c43 -161 86 -322 96 -358 10 -36 44 -164 75 -285 61 -235 85 -291 139 -324 33 -21 44 -21 540 -21 559 0 541 -2 590 63 32 42 40 81 72 362 14 127 33 299 43 384 17 149 17 155 -1 173 -17 17 -54 18 -742 18 l-724 0 -11 33 c-5 17 -27 95 -47 172 -20 77 -44 146 -52 153 -20 15 -378 17 -404 1z m1902 -474 c0 -14 -18 -183 -40 -377 -41 -353 -51 -397 -89 -418 -13 -6 -189 -10 -499 -10 l-479 0 -26 26 c-31 31 -24 10 -87 254 -114 437 -140 537 -140 543 0 4 306 7 680 7 l680 0 0 -25z"/> <path d="M1332 1397 c-6 -7 -13 -56 -14 -108 l-3 -94 -94 -3 c-101 -3 -121 -11 -121 -48 0 -33 14 -38 120 -44 l95 -5 3 -95 c2 -75 6 -98 19 -107 22 -17 28 -16 47 3 12 12 16 37 16 110 l0 94 94 0 c100 0 126 10 126 50 0 30 -32 40 -129 40 l-91 0 0 100 c0 88 -2 100 -19 110 -26 13 -36 13 -49 -3z"/> <path d="M1035 530 c-69 -28 -96 -127 -53 -190 30 -44 61 -60 117 -60 37 0 49 5 82 39 35 35 39 44 39 91 0 47 -4 56 -39 91 -33 34 -45 39 -82 38 -24 0 -53 -4 -64 -9z"/> <path d="M1589 501 c-35 -35 -39 -44 -39 -91 0 -47 4 -56 39 -91 32 -33 45 -39 80 -39 54 0 97 22 121 63 55 90 -11 197 -121 197 -35 0 -48 -6 -80 -39z"/> </g> </svg>  {% endcomment %}
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="20px" height="20px" viewBox="0 0 256 256" xml:space="preserve">
+                              <defs>
+                              </defs>
+                              <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)" >
+                                <path d="M 73.713 65.44 H 27.689 c -3.566 0 -6.377 -2.578 -6.686 -6.13 c -0.21 -2.426 0.807 -4.605 2.592 -5.939 L 16.381 21.07 c -0.199 -0.889 0.017 -1.819 0.586 -2.53 s 1.431 -1.124 2.341 -1.124 H 87 c 0.972 0 1.884 0.471 2.446 1.263 c 0.563 0.792 0.706 1.808 0.386 2.725 l -7.798 22.344 c -1.091 3.13 -3.798 5.429 -7.063 5.999 l -47.389 8.281 c -0.011 0.001 -0.021 0.003 -0.032 0.005 c -0.228 0.04 -0.623 0.126 -0.568 0.759 c 0.056 0.648 0.48 0.648 0.708 0.648 h 46.024 c 1.657 0 3 1.343 3 3 S 75.37 65.44 73.713 65.44 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #7069bc; fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                <circle cx="28.25" cy="75.8" r="6.5" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #7069bc; fill-rule: nonzero; opacity: 1;" transform="  matrix(1 0 0 1 0 0) "/>
+                                <circle cx="68.28999999999999" cy="75.8" r="6.5" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #7069bc; fill-rule: nonzero; opacity: 1;" transform="  matrix(1 0 0 1 0 0) "/>
+                                <path d="M 19.306 23.417 c -1.374 0 -2.613 -0.95 -2.925 -2.347 l -1.375 -6.155 c -0.554 -2.48 -2.716 -4.212 -5.258 -4.212 H 3 c -1.657 0 -3 -1.343 -3 -3 s 1.343 -3 3 -3 h 6.749 c 5.372 0 9.942 3.662 11.113 8.904 l 1.375 6.155 c 0.361 1.617 -0.657 3.221 -2.274 3.582 C 19.742 23.393 19.522 23.417 19.306 23.417 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #7069bc; fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                              </g>
+                            </svg>
+                            <span> 300+ sold recently</span>
+                          </p>
+                        {% endif %} {% endcomment %}
+
+                                        
+                            
+                                
+                                
+                        <span class="custom-free-shipping c-10">FREE Shipping</span>             
+
+
+                    </div>
+                    
+                    
+                    </section>
+                `);
+    });
+    const recentBlock = `${recentViewHtml.join('')}`;
+    console.log(recentBlock, 'recentBlock');
+    const contentBlock = document.querySelectorAll('.js-recentPdpBlock');
+    contentBlock.forEach((element) => {
+      element.innerHTML = recentBlock;
+    });
+  }
+
+  getRecentPdp();
+</script>

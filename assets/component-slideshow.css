@@ -207,6 +207,10 @@ slideshow-component:not(.page-width) .slider-buttons {
 .custom-slider {
   display: none !important;
 }
+.slideshow__media .mobile {
+  display: none !important;
+}
+
 @media(max-width:768px) {
   .mobile-slider {
     width: 100%;
@@ -216,5 +220,11 @@ slideshow-component:not(.page-width) .slider-buttons {
   }
   .mobile-slider .slideshow__media img {
     object-fit: cover;
+  }
+  .slideshow__media .mobile {
+    display: block !important;
+  }
+  .slideshow__media .desktop {
+    display: none !important;
   }
 }

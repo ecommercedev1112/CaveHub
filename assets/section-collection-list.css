@@ -119,12 +119,14 @@
   }
 
   .custom-collection-list .card-wrapper .card__inner {
-    height: unset;
+    height: 155px;
+    width: 120px;
+    margin: auto;
   }
   .collection-list-title {
     margin-left: 0;
     font-size: 20px;
-    font-weight: 700;
+    font-weight: 500;
     white-space: normal;
   }
   .custom-collection-list .card-wrapper .card__content .card__heading a {
@@ -141,9 +143,13 @@
   .collection-list-view-all a {
     border-radius: 3px;
   }
-    .view-all__button {
-      font-size: 14px;
-      padding-bottom: 10px;
+  .view-all__button {
+    font-size: 14px;
+    padding-bottom: 10px;
 
-    }
+  }
+  .custom-collection-list .card-wrapper .card__media .media img {
+    width: 150px;
+    height: 155px;
+  }
 }

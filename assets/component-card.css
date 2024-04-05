@@ -90,6 +90,7 @@
   /* Fix for Safari border bug on hover */
   z-index: 0;
   border-radius: calc(var(--border-radius) - var(--border-width) - var(--image-padding));
+  background-color: unset;
 }
 
 .card--card .card__inner .card__media {
@@ -531,13 +532,13 @@
   flex-direction: column;
   justify-content: space-between;
 }
-
+/* 
 .card-wrapper .media--transparent {
   background-color: #fff;
-}
+} */
 
 .card-wrapper .card_text.card__content {
-  height: auto;
+  height: 170px;
   background-color: #f5f5f5;
   position: relative;
   border-top: 1px solid #ddd;
@@ -848,7 +849,7 @@
   }
 
   .card-information .custom-rating {
-    top: -20%;
+    top: -25%;
     left: 5%;
   }
     .card-wrapper .wk-icon {

@@ -1701,10 +1701,6 @@ a.product__text {
     font-size: 14px;
   }
 
-  .prime-bundles-data #prime-bundles.prime-bundle-price {
-    font-size: 14px;
-  }
-
   .prime-bundles-data #prime-bundles.bundle-radio-button.condensed {
     height: 15px;
     width: 15px;
@@ -1731,4 +1727,26 @@ a.product__text {
 .product-single__description .a-section span{
   font-weight: 400;
   font-size: 15px;
+}
+.jdgm-star.jdgm--on::before {  
+  content: "\f005";
+  font-family: FontAwesome;
+  display: inline-block;
+  font-size: 24px;
+  background: linear-gradient(90deg, rgb(245, 189, 2) var(--percent), rgba(var(--color-foreground), .15) var(--percent));
+  -webkit-background-clip: text;
+    
+}
+@media(max-width:768px) {
+  .jdgm-star.jdgm--on::before {
+    font-size: 20px;
+  }
+  #prime-bundles.prime-bundle-price {
+    font-size: 16px !important;
+    font-weight: 500;
+  }
+  #prime-bundles.discounted-price {
+    font-size: 16px !important;
+    font-weight: 500;
+  }
 }

@@ -2,6 +2,17 @@
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 {{ 'component-slideshow.css' | asset_url | stylesheet_tag }}
 
+{% style %}
+  .slideshow {
+    height: 100vh;
+  }
+  @media(max-width:768px) {
+    .slideshow {
+      height: 50vh;
+    }
+  }
+{% endstyle %}
+
 {%- if section.settings.slide_height == 'adapt_image' and section.blocks.first.settings.image != blank -%}
   {%- style -%}
     @media screen and (max-width: 749px) {
@@ -21,6 +32,7 @@
         content: '';
         display: block;
       }
+      
     }
   {%- endstyle -%}
 {%- endif -%}
@@ -105,7 +117,7 @@
   {%- endif -%}
 
   <div
-    class="mobile-slider slideshow banner banner--{{ section.settings.slide_height }} grid grid--1-col slider slider--everywhere{% if section.settings.show_text_below %} banner--mobile-bottom{% endif %}{% if section.blocks.first.settings.image == blank %} slideshow--placeholder{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+    class="slideshow banner banner--{{ section.settings.slide_height }} grid grid--1-col slider slider--everywhere{% if section.settings.show_text_below %} banner--mobile-bottom{% endif %}{% if section.blocks.first.settings.image == blank %} slideshow--placeholder{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
     id="Slider-{{ section.id }}"
     aria-live="polite"
     aria-atomic="true"
@@ -143,7 +155,7 @@
                 assign fetch_priority = 'high'
               endif
             -%}
-            {%- if forloop.first %}
+            {% comment %} {%- if forloop.first %}
               {{
                 block.settings.image
                 | image_url: width: 3840
@@ -155,7 +167,22 @@
                 | image_url: width: 3840
                 | image_tag: loading: 'lazy', height: height, sizes: sizes, widths: widths
               }}
-            {%- endif -%}
+            {%- endif -%} {% endcomment %}
+              <img
+                  src="{{ block.settings.image | image_url: width: 3840 }}"
+                  alt="{{ block.settings.image.alt | escape }}"
+                  class="desktop lazyload"
+                  fetchpriority="high"
+              >
+              {% if block.settings.mobile_image %}
+                <img
+                  
+                  src="{{ block.settings.mobile_image | image_url: medium }}"
+                  alt="{{ block.settings.mobile_image.alt | escape }}"
+                  class="mobile lazyload"
+                  fetchpriority="high"
+                >                    
+              {% endif %}
           {%- else -%}
             {%- assign placeholder_slide = forloop.index | modulo: 2 -%}
             {%- if placeholder_slide == 1 -%}
@@ -412,6 +439,11 @@
           "type": "image_picker",
           "id": "image",
           "label": "t:sections.slideshow.blocks.slide.settings.image.label"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile image"
         },
         {
           "type": "inline_richtext",

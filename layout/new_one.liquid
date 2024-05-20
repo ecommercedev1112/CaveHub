@@ -330,7 +330,7 @@
       }
     {% endstyle %}
 
-    {% comment %} {{ 'base.css' | asset_url | stylesheet_tag }} {% endcomment %}
+    {{ 'base.css' | asset_url | stylesheet_tag }}
 
     {{ <'section-scroll.css'> | asset_url | stylesheet_tag }}
 
